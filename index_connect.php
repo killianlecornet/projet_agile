@@ -50,7 +50,7 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
-            <a href="#">Profile</a>
+            <a href="profile.php">Profile</a>
             <a href="connect/logout.php">Deconnection</a>
         </div>
     </div>
@@ -81,7 +81,7 @@
                 <div class="col-lg-3">
                     <div class="header__right">
                         <div class="header__right__auth">
-                            <a href="#">profile</a>
+                            <a href="profile.php">profile</a>
                             <a type="submit" href="connect/logout.php">déconnection</a>
                         </div>
                         <ul class="header__right__widget">
