@@ -1,3 +1,19 @@
+<?php 
+
+$pdo = new PDO("mysql:host=localhost;dbname=methode_agile", "root", "", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+
+
+if (!empty($_POST)) {
+
+    $_POST["card"] = htmlentities($_POST["card"], ENT_QUOTES); 
+    $_POST["date"] = htmlentities($_POST["date"], ENT_QUOTES);
+    $_POST["CVV"] = htmlentities($_POST["CVV"], ENT_QUOTES);
+
+    
+    $requeteSQL = "INSERT INTO carte (card, date, CVV) VALUES ('$_POST[card]', '$_POST[date]', '$_POST[CVV]')"; 
+    $result = $pdo->exec($requeteSQL); 
+  }
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -49,8 +65,8 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
-            <a href="connect/login.php">Login</a>
-            <a href="connect/register.php">Register</a>
+            <a href="profile.php">Profile</a>
+            <a href="connect/logout.php">Deconnection</a>
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -67,21 +83,20 @@
                 <div class="col-xl-6 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./index.html">Home</a></li>
+                            <li><a href="./index_connect.php">Home</a></li>
                             <li><a href="#">Women’s</a></li>
                             <li><a href="#">Men’s</a></li>
-                            <li class="active"><a href="./shop.html">Shop</a></li>
+                            <li class="active"><a href="./shop_connect.php">Shop</a></li>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="./contact_connect.php">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__right">
                         <div class="header__right__auth">
-                            <a href="connect/login.php">Login</a>
-                            <a href="connect/register.php">Register</a>
+                            <a href="profile.php">Profile</a>
+                            <a href="connect/logout.php">Deconnection</a>
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
@@ -108,9 +123,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <a href="./index.html"><i class="fa fa-shopping-basket"></i> Basket</a>
-                        <span>Payment</span>
+                        <a href="./index_connect.php"><i class="fa fa-home"></i> Home</a>
+                        <a href="./profile.php"><i class="fa fa-shopping-basket"></i> Profile</a>
+                        <span>Paiement</span>
                     </div>
                 </div>
             </div>
@@ -126,12 +141,18 @@
                     <div class="contact__content">
                         <div class="contact__form">
                             <h5>BILLING INFOS</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Card nº">
-                                <input type="text" placeholder="Card Owner">
-                                <input type="text" placeholder="Exp.Date" style="width: 40%;">
-                                <input type="text" placeholder="CVV" style="width: 20%; margin: 0 7%;">
-                                <button type="submit" class="site-btn">Validate</button>
+                            <form method="POST" action="">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Type de carte </label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                      <option>Visa</option>
+                                      <option>MasterCard</option>
+                                    </select>
+                                  </div>
+                                <input type="password" placeholder="Card nº" id="card" name="card">
+                                <input type="text" placeholder="Exp.Date" id="date" name="date" style="width: 40%;">
+                                <input type="text" placeholder="CVV" id="CVV" name="CVV" style="width: 20%; margin: 0 7%;">
+                                <button name="upload" id="OK" type="submit" class="site-btn">Validate</button>
                             </form>
                         </div>
                     </div>

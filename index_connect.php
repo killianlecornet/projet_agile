@@ -73,7 +73,6 @@
                             <li><a href="#">Men’s</a></li>
                             <li><a href="./shop_connect.php">Shop</a></li>
                             </li>
-                            <li><a href="./blog_connect.php">Blog</a></li>
                             <li><a href="./contact_connect.php">Contact</a></li>
                         </ul>
                     </nav>
